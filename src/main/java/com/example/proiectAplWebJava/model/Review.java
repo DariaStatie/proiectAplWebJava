@@ -1,0 +1,31 @@
+package com.example.proiectAplWebJava.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Review {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int reviewId;
+
+    private String reviewText;
+
+    @ManyToOne
+    @JoinColumn(name = "viewer_id")
+    private Viewer viewer;
+
+    @ManyToOne
+    @JoinColumn(name= "movie_id")
+    private Movie movie;
+
+    private Integer rating;
+}
